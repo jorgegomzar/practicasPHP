@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Práctica 08</title>
+    <title>Examen</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
       li:hover {
@@ -14,22 +13,37 @@
       a{
         display: block;
       }
-
+      #content {
+        position: relative;
+        margin: 5% auto;
+        height: 70%;
+        width: 80%;
+        border-radius: 20px;
+      }
     </style>
   </head>
-  <body class="bg-secondary">
-      <header class="jumbotron text-center bg-dark text-white">
-        <h1 class="display-3">Prácticas PHP</h1>
+  <body style="background-image: linear-gradient(lightgrey, grey)">
+    <form id="content" method="get" action="index.php" class="bg-secondary">
+      <header style="border-radius: 10px" class="jumbotron text-center bg-dark text-white">
+        <h1 class="display-4">LISTA DE NÚMEROS</h1>
       </header>
-      <main class="container text-justify-center">
-        <ul class="list-group">
-          <li class="list-group-item"><a href="practica07/index.html"><b>Práctica07</b></a></li>
-          <li class="list-group-item"><a href="practica08/index.html"><b>Práctica08</b></a></li>
-          <li class="list-group-item"><a href="practica09/index.html"><b>Práctica09</b></a></li>
-          <li class="list-group-item"><a href="examen/index.php"><b>Examen</b></a></li>
-        </ul>
-      </main>
-    <footer class="bg-secondary text-white text-center" style="position:absolute;bottom:0;width:100%;font-size:1.25em;">
+      <div class="form-group">
+        <label for="num">¿Cuántos números quieres escribir?</label><br>
+        <input class="form-control" type="text" name="num" value=""><br>
+        <button class="form-control" type="submit">Enviar</button>
+        <?php
+          if(isset($_GET['num'])){
+            $num = (int) $_GET['num'];
+            if($num < 0 or $num > 20)
+              echo "<p class='alert alert-error'>Se deben enviar números positivos y además tiene que ser menor que 20</p>";
+            else {
+              header("location: innumbers.php?num=$num");
+            }
+          }
+        ?>
+      </div>
+    </form>
+    <footer class="bg-secondary text-white text-center" style="position:relative;bottom:0;width:100%;font-size:1.25em;">
       Thanks <a style="display: inline-block; text-transform:none; color:yellow;" href="https://github.com/powervic">Victoria</a>, for always supporting me.
       <br>
       Credits to <a style="display: inline-block;text-transform:none; color:yellow;" href="http://jorgesanchez.net/">&copy;Jorge Sánchez</a>
