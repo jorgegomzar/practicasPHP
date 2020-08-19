@@ -1,2 +1,2 @@
 # practicasPHP
-For learning PHP purposes.
+In order to learn some basic PHP
